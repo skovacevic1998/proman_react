@@ -1,0 +1,165 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.topnav {
+  background: linear-gradient(to right, #85b3e7b3, #ff000000);
+  height: 3rem;
+  display: flex;
+  justify-content: flex-start;
+  box-shadow: 0px 0px 20px 1px;
+  animation: animatedBackground 4s linear infinite;
+  position: relative;
+  border-radius: 10px;
+}
+
+@keyframes animatedBackground {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
+}
+
+.topnav a {
+  text-decoration: none;
+  text-align: center;
+  width: 150px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  font-size: 18px;
+  text-transform: uppercase;
+  transition: all 400ms;
+}
+
+.topnav .logout {
+  display: flex;
+  align-items: center;
+  padding: 7px;
+  max-width: 50px;
+  border-radius: 10px;
+}
+
+.topnav .logout img {
+  height: 100%;
+  width: auto;
+}
+
+.topnav .logout:hover {
+  background-color: rgb(255, 0, 0);
+  border-radius: 10px;
+}
+
+.topnav a:hover {
+  color: white;
+  background-color: rgba(32, 66, 105, 0.7);
+  transition: all 400ms;
+  text-shadow: -2px -2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.logo {
+  height: 50px;
+  vertical-align: middle;
+  margin-left: 2%;
+  margin-right: 2%;
+}
+
+.dropdown {
+  display: flex;
+}
+
+.dropdown-content,
+.profil-content {
+  display: block;
+  position: absolute;
+  background-color: #fff;
+  min-width: 150px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.2s ease-in-out;
+  margin-top: 50px;
+  top: 10%;
+}
+
+.dropdown-content a,
+.profil-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  width: 100%;
+}
+
+.dropdown:hover .dropdown-content,
+.profil:hover .profil-content {
+  margin-top: 50px;
+  transform: scaleY(1);
+}
+
+.profil {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 60px;
+  padding: 7px;
+  max-width: 50px;
+}
+
+.topnav .profil:hover {
+  background-color: rgba(40, 92, 7, 0.5);
+}
+
+.profil .profil-item {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 7px;
+}
+
+.profil img {
+  height: 30px;
+  width: auto;
+}
+
+.nav-link.active {
+  background-color: rgba(4, 4, 105, 0.648);
+  color: white;
+}
+
+@media screen and (max-width: 768px) {
+  .topnav a {
+    width: auto;
+  }
+
+  .profil .profil-content {
+    right: 0;
+    left: 0;
+    margin-top: 40px;
+  }
+
+  .profil:hover .profil-content {
+    margin-top: 40px;
+  }
+
+  .dropdown img {
+    height: 20px;
+  }
+
+  .dropdown .dropdown-content {
+    right: 0;
+    left: 0;
+    margin-top: 40px;
+  }
+
+  .dropdown:hover .dropdown-content {
+    margin-top: 40px;
+  }
+}
