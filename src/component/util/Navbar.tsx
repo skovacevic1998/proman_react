@@ -1,6 +1,4 @@
-import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import "../../css/navbar.css";
 import user_img from "../../assets/user.png";
 import logout_img from "../../assets/logout.png";
 import logo_img from "../../assets/logo.png";
@@ -16,7 +14,9 @@ export const Navbar = () => {
   return (
     <>
       <div className="topnav">
-        <img className="logo" src={logo_img} alt="logo" />
+        <div className="logo_div">
+          <img className="logo" src={logo_img} alt="logo" />
+        </div>
         <Link to="/" className={`nav-link ${isActive("/") ? "active" : ""}`}>
           Home
         </Link>
@@ -24,23 +24,18 @@ export const Navbar = () => {
           <a className="dropdown-item">Projects</a>
           <div className="dropdown-content">
             <Link
-              to="/option1"
-              className={`nav-link ${isActive("/option1") ? "active" : ""}`}
+              to="/react"
+              className={`nav-link ${isActive("/react") ? "active" : ""}`}
             >
-              Option 1
+              React
             </Link>
             <Link
-              to="/option2"
-              className={`nav-link ${isActive("/option2") ? "active" : ""}`}
+              to="/spring"
+              className={`nav-link ${isActive("/spring") ? "active" : ""}`}
             >
-              Option 2
+              Spring
             </Link>
-            <Link
-              to="/option3"
-              className={`nav-link ${isActive("/option3") ? "active" : ""}`}
-            >
-              Option 3
-            </Link>
+            
           </div>
         </div>
         <Link
@@ -90,14 +85,13 @@ export const Navbar = () => {
             </Link>
           </div>
         </div>
-        <motion.a
+        <motion.div
           className="logout"
-          href="#"
           whileHover={{ scale: 1.2 }}
           whileTap={{ scale: 0.8 }}
         >
           <img src={logout_img} alt="Logout" />
-        </motion.a>
+        </motion.div>
       </div>
     </>
   );
