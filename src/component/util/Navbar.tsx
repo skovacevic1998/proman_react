@@ -24,8 +24,8 @@ export const Navbar = () => {
           <a className="dropdown-item">Projects</a>
           <div className="dropdown-content">
             <Link
-              to="/react"
-              className={`nav-link ${isActive("/react") ? "active" : ""}`}
+              to="/reactprojects"
+              className={`nav-link ${isActive("/reactprojects") ? "active" : ""}`}
             >
               React
             </Link>

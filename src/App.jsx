@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { About, Contact, Footer, Homepage, Navbar } from "./component";
+import { About, Contact, Footer, Homepage, Navbar, ReactProjects } from "./component";
 import "./css/default.css";
 import videoBg from "./assets/backgroundvideo.mp4";
 
@@ -20,6 +20,7 @@ function App() {
               <Route path="/" element={<Homepage />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/about" element={<About />} />
+              <Route path="/reactprojects" element={<ReactProjects />} />
             </Routes>
           </div>
           <div className="footer_div"><Footer/></div>
