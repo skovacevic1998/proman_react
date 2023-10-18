@@ -2,10 +2,11 @@ import { Modal } from "antd";
 import { useState } from "react";
 import { SEPAModal } from "../util/SEPAModal";
 import { Button } from "@mui/material";
-import { PromanModal } from "../util/PromanModal";
+import { GenericModal } from "../util/GenericModal";
 import { CVModal } from "../util/CVModal";
 import { TableSwitchModal } from "../util/TableSwitchModal";
 import { NavbarModal } from "../util/NavbarModal";
+import modalContent from "../../data/ProjectsModalData.json"
 
 interface ButtonProps {
   id: number;
@@ -14,7 +15,7 @@ interface ButtonProps {
 }
 
 const projectButtonList: ButtonProps[] = [
-  {id: 1, name: "PROMAN", component: <PromanModal/>},
+  {id: modalContent.id, name: modalContent.name, component: <GenericModal imagePath={modalContent.component.imagePath} description={modalContent.component.description} availability={[{name: modalContent.component.availability.name, description: modalContent.component.availability.description, isLink: modalContent.component.availability.isLink}]} updated = {modalContent.component.updated} />},
   {id: 2, name: "SEPA Standard", component: <SEPAModal/>},
   {id: 3, name: "CV", component: <CVModal/>}
 ]

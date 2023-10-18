@@ -6,7 +6,7 @@ export { Footer } from "./util/Footer";
 export { HomeImageList } from "./util/HomeImageList";
 export { ReactProjects } from "./page/ReactProjects";
 export { SEPAModal } from "./util/SEPAModal";
-export { PromanModal } from "./util/PromanModal";
+export { GenericModal } from "./util/GenericModal";
 export { CVModal } from "./util/CVModal"
 export { TableSwitchModal } from "./util/TableSwitchModal"
 export { NavbarModal } from "./util/NavbarModal"
