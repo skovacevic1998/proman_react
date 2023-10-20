@@ -1,37 +1,44 @@
 import { Modal } from "antd";
 import { useState } from "react";
-import { SEPAModal } from "../util/SEPAModal";
 import { Button } from "@mui/material";
 import { GenericModal } from "../util/GenericModal";
-import { CVModal } from "../util/CVModal";
-import { TableSwitchModal } from "../util/TableSwitchModal";
-import { NavbarModal } from "../util/NavbarModal";
-import modalContent from "../../data/ProjectsModalData.json"
+import leftModalContent from "../../data/ProjectsModalLeftData.json";
+import rightModalContent from "../../data/ProjectsModalRightData.json";
+import React from "react";
 
-interface ButtonProps {
-  id: number;
+interface availabilityListProps {
   name: string;
-  component: any;
+  description: string;
+  isLink: boolean;
 }
 
-const projectButtonList: ButtonProps[] = [
-  {id: modalContent.id, name: modalContent.name, component: <GenericModal imagePath={modalContent.component.imagePath} description={modalContent.component.description} availability={[{name: modalContent.component.availability.name, description: modalContent.component.availability.description, isLink: modalContent.component.availability.isLink}]} updated = {modalContent.component.updated} />},
-  {id: 2, name: "SEPA Standard", component: <SEPAModal/>},
-  {id: 3, name: "CV", component: <CVModal/>}
-]
+interface GenericModalProps {
+  imagePath: string;
+  description: string;
+  availability: availabilityListProps[];
+  updated: string;
+}
 
-const featuresButtonList: ButtonProps[] = [
-  {id: 4, name: "Table switching with ant design", component: <TableSwitchModal/>},
-  {id: 5, name: "Navigation bar", component: <NavbarModal/>},
-]
+interface ProjectItem {
+  id: number;
+  name: string;
+  component: GenericModalProps;
+}
 
 export const ReactProjects: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modalContent, setModalContent] = useState<any>();
+  const [modalContent, setModalContent] = useState<JSX.Element>();
 
-  const showModal = (component: any) => {
+  const showModal = (component: GenericModalProps) => {
     setIsModalOpen(true);
-    setModalContent(component);
+    setModalContent(
+      <GenericModal
+        availability={component.availability}
+        description={component.description}
+        imagePath={component.imagePath}
+        updated={component.updated}
+      />
+    );
   };
 
   const handleOk = () => {
@@ -51,9 +58,12 @@ export const ReactProjects: React.FC = () => {
         <div className="react_projects_content">
           <div className="react_projects_content_left">
             <h2>PROJECTS</h2>
-            {projectButtonList.map((item)=>(
+            {leftModalContent.modalContent.map((item: ProjectItem) => (
               <div key={item.id}>
-                <Button variant="contained" onClick={() => showModal(item.component)}>
+                <Button
+                  variant="contained"
+                  onClick={() => showModal(item.component)}
+                >
                   <h3>{item.name}</h3>
                 </Button>
               </div>
@@ -62,16 +72,25 @@ export const ReactProjects: React.FC = () => {
 
           <div className="react_projects_content_right">
             <h2>FEATURES</h2>
-            {featuresButtonList.map((item)=>(
-              <div key={item.id}>
-                <Button variant="contained" onClick={() => showModal(item.component)}>
-                  <h3>{item.name}</h3>
-                </Button>
-              </div>
-            ))}
+            {rightModalContent.modalContent.map((item: ProjectItem) => (
+                <div key={item.id}>
+                  <Button
+                    variant="contained"
+                    onClick={() => showModal(item.component)}
+                  >
+                    <h3>{item.name}</h3>
+                  </Button>
+                </div>
+              ))}
           </div>
         </div>
-        <Modal title={modalContent?.props.name} open={isModalOpen} onOk={handleOk} onCancel={handleCancel} footer={null}>
+        <Modal
+          title={modalContent?.props.name}
+          open={isModalOpen}
+          onOk={handleOk}
+          onCancel={handleCancel}
+          footer={null}
+        >
           {modalContent}
         </Modal>
       </div>
