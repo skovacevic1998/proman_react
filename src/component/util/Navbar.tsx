@@ -60,15 +60,23 @@ export const Navbar = () => {
           </motion.div>
           <div className="profil-content">
             <Link
-              to="/profile/option1"
+              to="/profile/info"
               className={`nav-link ${
-                isActive("/profile/option1") ? "active" : ""
+                isActive("/profile/info") ? "active" : ""
               }`}
             >
               Profile
             </Link>
             <Link
-              to="/profile/option2"
+              to="/profile/manage"
+              className={`nav-link ${
+                isActive("/profile/manage") ? "active" : ""
+              }`}
+            >
+              Manage Projects
+            </Link>
+            <Link
+              to="/profile/patchNotes"
               className={`nav-link ${
                 isActive("/profile/option2") ? "active" : ""
               }`}
@@ -76,9 +84,9 @@ export const Navbar = () => {
               Patch notes
             </Link>
             <Link
-              to="/profile/option3"
+              to="/profile/reportBugs"
               className={`nav-link ${
-                isActive("/profile/option3") ? "active" : ""
+                isActive("/profile/reportBugs") ? "active" : ""
               }`}
             >
               Report bugs

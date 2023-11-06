@@ -7,6 +7,8 @@ export { HomeImageList } from "./util/HomeImageList";
 export { ReactProjects } from "./page/ReactProjects";
 export { SEPAModal } from "./util/SEPAModal";
 export { GenericModal } from "./util/GenericModal";
-export { CVModal } from "./util/CVModal"
-export { TableSwitchModal } from "./util/TableSwitchModal"
-export { NavbarModal } from "./util/NavbarModal"
+export { CVModal } from "./util/CVModal";
+export { TableSwitchModal } from "./util/TableSwitchModal";
+export { NavbarModal } from "./util/NavbarModal";
+export { ManageProjects } from "./page/ManageProjects";
+export { ManageProjectsTable } from "./util/ManageProjectsTable";
