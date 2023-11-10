@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import { ManageProjectsTable } from "../util/ManageProjectsTable";
 import React from "react";
-import { Checkbox, Input, Upload, UploadProps, message } from "antd";
+import { Checkbox, Input, Switch, Upload, UploadProps, message } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 
 const { TextArea } = Input;
@@ -39,7 +39,7 @@ const props: UploadProps = {
   },
 };
 
-const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
+const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
 export const ManageProjects: React.FC = () => {
   const [category, setCategory] = React.useState("");
@@ -52,6 +52,9 @@ export const ManageProjects: React.FC = () => {
   const handleChangeStatus = (event: SelectChangeEvent) => {
     setStatus(event.target.value as string);
   };
+  const onChange = (checked: any) => {
+    console.log(`switch to ${checked}`);
+  };
 
   return (
     <>
@@ -60,77 +63,101 @@ export const ManageProjects: React.FC = () => {
           <h1>MANAGE PROJECTS</h1>
         </div>
         <div className="manage_projects_content">
-          <div>
-            <Box sx={{ minWidth: 120 }}>
-              <FormControl fullWidth>
-                <InputLabel id="category_select_label">CATEGORY</InputLabel>
-                <Select
-                  labelId="category_select_label"
-                  id="category_select"
-                  value={category}
-                  label="Category"
-                  onChange={handleChange}
+          <div className="manage_projects_content_row">
+            <div className="manage_projects_category_div">
+              <Box sx={{ minWidth: 120 }}>
+                <FormControl fullWidth>
+                  <InputLabel id="category_select_label">CATEGORY</InputLabel>
+                  <Select
+                    labelId="category_select_label"
+                    id="category_select"
+                    value={category}
+                    label="Category"
+                    onChange={handleChange}
+                  >
+                    <MenuItem value={10}>REACT</MenuItem>
+                    <MenuItem value={20}>SPRING</MenuItem>
+                  </Select>
+                </FormControl>
+              </Box>
+            </div>
+            <div>
+              <TextField
+                id="modal_name"
+                label="PROECT NAME"
+                variant="standard"
+              />
+            </div>
+          </div>
+          <div className="manage_projects_content_row">
+            <div className="manage_projects_project_description">
+              <InputLabel>PROJECT DESCRIPTION</InputLabel>
+              <TextArea
+                showCount
+                onChange={onChange}
+                placeholder="Enter project description..."
+                style={{ height: 120, resize: "none" }}
+              />
+            </div>
+          </div>
+          <div className="manage_projects_content_row">
+            <div className="manage_projects_content_upload_btn">
+              <InputLabel>PROJECT IMAGE</InputLabel>
+              <Upload {...props}>
+                <Button
+                  startIcon={<UploadOutlined />}
+                  variant="contained"
                 >
-                  <MenuItem value={10}>REACT</MenuItem>
-                  <MenuItem value={20}>SPRING</MenuItem>
-                </Select>
-              </FormControl>
-            </Box>
+                  SELECT IMAGE
+                </Button>
+              </Upload>
+            </div>
           </div>
-          <div>
-            <TextField id="modal_name" label="PROECT NAME" variant="standard" />
-            <InputLabel>PROJECT DESCRIPTION</InputLabel>
-            <TextArea
-              showCount
-              onChange={onChange}
-              placeholder="Enter project description..."
-              style={{ height: 120, resize: "none" }}
-            />
-          </div>
-          <div>
-            <Upload {...props}>
-              <Button startIcon={<UploadOutlined />}>Image path</Button>
-            </Upload>
-
+          <div className="manage_projects_content_row">
             <TextField
               id="availability_name"
               label="AVAILABILITY NAME"
               variant="standard"
             />
           </div>
-          <div>
-          <InputLabel>AVAILABILITY DESCRIPTION</InputLabel>
-            <TextArea
-              showCount
-              onChange={onChange}
-              placeholder="Enter availability description..."
-              style={{ height: 120, resize: "none" }}
-            />
+          <div className="manage_projects_content_row">
+            <div className="manage_projects_availability_description">
+              <InputLabel>AVAILABILITY DESCRIPTION</InputLabel>
+              <TextArea
+                showCount
+                onChange={onChange}
+                placeholder="Enter availability description..."
+                style={{ height: 120, resize: "none" }}
+              />
+            </div>
           </div>
-          <div>
-          <InputLabel>AVAILABILITY DESCRIPTION IS LINK</InputLabel>
-          <Checkbox {...label} defaultChecked />
-          <Checkbox {...label} defaultChecked/>
+          <div className="manage_projects_content_row">
+            <div className="manage_projects_availability_linkset">
+              <InputLabel className="manage_projects_availability_label">AVAILABILITY DESCRIPTION IS LINK</InputLabel>
+              <Switch defaultChecked onChange={onChange} />
+            </div>
           </div>
-          <div>
-          <Box sx={{ minWidth: 120 }}>
-              <FormControl fullWidth>
-                <InputLabel id="status_select_label">PROJECT STATUS</InputLabel>
-                <Select
-                  labelId="status_select_label"
-                  id="status_select"
-                  value={status}
-                  label="PROJECT STATUS"
-                  onChange={handleChangeStatus}
-                >
-                  <MenuItem value={10}>ACTIVE</MenuItem>
-                  <MenuItem value={20}>INACTIVE</MenuItem>
-                </Select>
-              </FormControl>
-            </Box>
+          <div className="manage_projects_content_row">
+            <div className="manage_projects_status_div">
+              <Box sx={{ minWidth: 120 }}>
+                <FormControl fullWidth>
+                  <InputLabel id="status_select_label">PROJECT STATUS</InputLabel>
+                  <Select
+                    labelId="status_select_label"
+                    id="status_select"
+                    value={status}
+                    label="PROJECT STATUS"
+                    onChange={handleChangeStatus}
+                  >
+                    <MenuItem value={10}>ACTIVE</MenuItem>
+                    <MenuItem value={20}>INACTIVE</MenuItem>
+                  </Select>
+                </FormControl>
+              </Box>
+            </div>
           </div>
-          <div>
-            <Button variant="contained">Contained</Button>
+          <div className="manage_projects_content_row_button">
+            <Button variant="contained">SAVE/ADD</Button>
           </div>
           <div>
             <ManageProjectsTable />

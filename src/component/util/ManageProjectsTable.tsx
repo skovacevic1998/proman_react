@@ -329,7 +329,7 @@ export function ManageProjectsTable() {
 
   return (
     <Box sx={{ width: '100%' }}>
-      <Paper sx={{ width: '100%', mb: 2 }}>
+      <Paper sx={{ width: '100%', mb: 2, backgroundColor: '#ffffff5d' }}>
         <EnhancedTableToolbar numSelected={selected.length} />
         <TableContainer>
           <Table
