@@ -12,3 +12,4 @@ export { TableSwitchModal } from "./util/TableSwitchModal";
 export { NavbarModal } from "./util/NavbarModal";
 export { ManageProjects } from "./page/ManageProjects";
 export { ManageProjectsTable } from "./util/ManageProjectsTable";
+export { AvailabilityTable } from "./util/AvailabilityTable"

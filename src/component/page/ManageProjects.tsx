@@ -1,6 +1,6 @@
 import {
   Box,
-  Button,
+  Button as ButtonMui,
   FormControl,
   InputLabel,
   MenuItem,
@@ -8,10 +8,12 @@ import {
   SelectChangeEvent,
   TextField,
 } from "@mui/material";
+import { Button as ButtonAntd } from "antd";
 import { ManageProjectsTable } from "../util/ManageProjectsTable";
 import React from "react";
 import { Checkbox, Input, Switch, Upload, UploadProps, message } from "antd";
-import { UploadOutlined } from "@ant-design/icons";
+import { PlusOutlined, UploadOutlined } from "@ant-design/icons";
+import { AvailabilityTable } from "../util/AvailabilityTable";
 
 const { TextArea } = Input;
 
@@ -104,44 +106,56 @@ export const ManageProjects: React.FC = () => {
             <div className="manage_projects_content_upload_btn">
               <InputLabel>PROJECT IMAGE</InputLabel>
               <Upload {...props}>
-                <Button
-                  startIcon={<UploadOutlined />}
-                  variant="contained"
-                >
+                <ButtonMui startIcon={<UploadOutlined />} variant="contained">
                   SELECT IMAGE
-                </Button>
+                </ButtonMui>
               </Upload>
             </div>
           </div>
-          <div className="manage_projects_content_row">
-            <TextField
-              id="availability_name"
-              label="AVAILABILITY NAME"
-              variant="standard"
-            />
-          </div>
-          <div className="manage_projects_content_row">
-            <div className="manage_projects_availability_description">
-              <InputLabel>AVAILABILITY DESCRIPTION</InputLabel>
-              <TextArea
-                showCount
-                onChange={onChange}
-                placeholder="Enter availability description..."
-                style={{ height: 120, resize: "none" }}
+
+          <div className="manage_projects_availability_set">
+            <div className="manage_projects_content_row">
+              <TextField
+                id="availability_name"
+                label="AVAILABILITY NAME"
+                variant="standard"
               />
             </div>
-          </div>
-          <div className="manage_projects_content_row">
-            <div className="manage_projects_availability_linkset">
-              <InputLabel className="manage_projects_availability_label">AVAILABILITY DESCRIPTION IS LINK</InputLabel>
-              <Switch defaultChecked onChange={onChange} />
+            <div className="manage_projects_content_row">
+              <div className="manage_projects_availability_description">
+                <InputLabel>AVAILABILITY DESCRIPTION</InputLabel>
+                <TextArea
+                  showCount
+                  onChange={onChange}
+                  placeholder="Enter availability description..."
+                  style={{ height: 120, resize: "none" }}
+                />
+              </div>
+            </div>
+            <div className="manage_projects_content_row">
+              <div className="manage_projects_availability_linkset">
+                <InputLabel className="manage_projects_availability_label">
+                  AVAILABILITY DESCRIPTION IS LINK
+                </InputLabel>
+                <Switch defaultChecked onChange={onChange} />
+              </div>
+            </div>
+            <div className="manage_projects_content_row_button2">
+              <ButtonAntd type="primary" shape="circle">
+                <PlusOutlined />
+              </ButtonAntd>
+            </div>
+            <div className="manage_projects_content_row">
+              <AvailabilityTable/>
             </div>
           </div>
           <div className="manage_projects_content_row">
             <div className="manage_projects_status_div">
               <Box sx={{ minWidth: 120 }}>
                 <FormControl fullWidth>
-                  <InputLabel id="status_select_label">PROJECT STATUS</InputLabel>
+                  <InputLabel id="status_select_label">
+                    PROJECT STATUS
+                  </InputLabel>
                   <Select
                     labelId="status_select_label"
                     id="status_select"
@@ -149,15 +163,17 @@ export const ManageProjects: React.FC = () => {
                     label="PROJECT STATUS"
                     onChange={handleChangeStatus}
                   >
-                    <MenuItem value={10}>ACTIVE</MenuItem>
-                    <MenuItem value={20}>INACTIVE</MenuItem>
+                    <MenuItem value={10}>ON DEVELOP</MenuItem>
+                    <MenuItem value={20}>ON TEST</MenuItem>
+                    <MenuItem value={10}>READY FOR DEPLOY</MenuItem>
+                    <MenuItem value={40}>FINISHED</MenuItem>
                   </Select>
                 </FormControl>
               </Box>
             </div>
           </div>
-          <div className="manage_projects_content_row_button">
-            <Button variant="contained">SAVE/ADD</Button>
+          <div className="manage_projects_content_row_button1">
+            <ButtonMui variant="contained">SAVE/ADD</ButtonMui>
           </div>
           <div>
             <ManageProjectsTable />
